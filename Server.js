@@ -33,7 +33,7 @@ app.post('/save-response', function(req, res, next){
       else {
           //write the headers and newline
           console.log('First answer, adding headers');
-          var headers= ["responseId", "startTime","endTime","testType","motivationPre","activityPoints","motivationPost","motivationRawPre","motivationRawPost", "flowRawPoints", "flow", "gender","age", "ethnicity", "sexualOrientation", "civilState", "city", "email","whatsapp"].join(";") + "\n" + row
+          var headers= ["responseId", "startTime","endTime","testType","motivationPre","activityPoints","motivationPost","motivationRawPre","motivationRawPost", "motivationRawPost2", "flowRawPoints", "flow", "gender","age", "ethnicity", "sexualOrientation", "civilState", "city", "email","whatsapp"].join(";") + "\n" + row
 
           fs.writeFile('responses.csv', headers, function (err) {
               if (err) throw err;

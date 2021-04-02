@@ -25,6 +25,10 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "ng
         templateUrl: "views/flow.html",
         controller: "FlowCtrl"
     }).
+    when("/posttest2", {
+        templateUrl: "views/posttest2.html",
+        controller: "PosttestCtrl2"
+    }).
     otherwise({
         redirectTo: "/pretest"
     });

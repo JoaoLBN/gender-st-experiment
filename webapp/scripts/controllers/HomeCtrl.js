@@ -117,7 +117,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     };
 
     $scope.showPosttest = function() {
-        $location.path("/flow");
+        $location.path("/posttest2");
     };
 
     $scope.getStars = function() {
@@ -312,7 +312,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             playAnimation("green");
 
             //badge level 5
-            if (totalPoints == 5 && levelFiveFlag) {
+            if (totalPoints == 25 && levelFiveFlag) {
                 levelFiveFlag = false;
 
                 $mdDialog.show({
@@ -330,7 +330,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 }, 2000);
 
 
-            } else if (totalPoints == 10 && levelTenFlag) {
+            } else if (totalPoints == 50 && levelTenFlag) {
                 levelTenFlag = false;
                 $mdDialog.show({
                     controller: 'Badge10Ctrl',

@@ -60,6 +60,7 @@ tutorServices.service("User", function($http) {
         flowPoints: 0,
         pre: [],
         post: [],
+        post2:[],
         flow: [],
     };
 
@@ -130,6 +131,10 @@ tutorServices.service("User", function($http) {
 
     this.setPost = function(value) {
         resp.post = value;
+    };
+
+    this.setPost2 = function(value) {
+        resp.post2 = value;
     };
 
     this.setFlow = function(value) {
