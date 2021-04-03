@@ -308,11 +308,11 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         //right answer
         if (userAnswer == answers[currentQuestion]) {
 
-            updatePoints(1);
+            updatePoints(10);
             playAnimation("green");
 
             //badge level 5
-            if (totalPoints == 25 && levelFiveFlag) {
+            if (totalPoints == 50 && levelFiveFlag) {
                 levelFiveFlag = false;
 
                 $mdDialog.show({
@@ -330,7 +330,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
                 }, 2000);
 
 
-            } else if (totalPoints == 50 && levelTenFlag) {
+            } else if (totalPoints == 100 && levelTenFlag) {
                 levelTenFlag = false;
                 $mdDialog.show({
                     controller: 'Badge10Ctrl',

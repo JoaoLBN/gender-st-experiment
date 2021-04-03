@@ -20,7 +20,7 @@ app.post('/save-response', function(req, res, next){
   var respId = uuid.v1()
 
   //data to be saved (participant's response)
-  var row = [respId, req.body.startTime, req.body.endTime, req.body.testType, req.body.pretestPoints, req.body.activityPoints, req.body.posttestPoints, req.body.pre, req.body.post, req.body.flowPoints,req.body.flow, req.body.gender, req.body.age, req.body.ethnicity, req.body.sexualOrientation, req.body.civilState, req.body.city, req.body.email, req.body.whatsapp].join(";")+"\n"
+  var row = [respId, req.body.startTime, req.body.endTime, req.body.testType, req.body.pretestPoints, req.body.posttestPoints,req.body.activityPoints, req.body.posttest2Points, req.body.pre, req.body.post, req.body.post2, req.body.flowPoints,req.body.flow, req.body.gender, req.body.age, req.body.ethnicity, req.body.sexualOrientation, req.body.civilState, req.body.city, req.body.email, req.body.whatsapp].join(";")+"\n"
 
   fs.stat('responses.csv', function (err, stat) {
       if (err == null) {
@@ -33,7 +33,7 @@ app.post('/save-response', function(req, res, next){
       else {
           //write the headers and newline
           console.log('First answer, adding headers');
-          var headers= ["responseId", "startTime","endTime","testType","motivationPre","activityPoints","motivationPost","motivationRawPre","motivationRawPost", "motivationRawPost2", "flowRawPoints", "flow", "gender","age", "ethnicity", "sexualOrientation", "civilState", "city", "email","whatsapp"].join(";") + "\n" + row
+          var headers= ["responseId", "startTime","endTime","testType","Self-handicappingPre", "Self-handicappingPost","activityPoints","Self-handicappingPost2","Self-handicappingRawPre","Self-handicappingRawPost", "Self-handicappingRawPost2", "flowRawPoints", "flow", "gender","age", "ethnicity", "sexualOrientation", "civilState", "city", "email","whatsapp"].join(";") + "\n" + row
 
           fs.writeFile('responses.csv', headers, function (err) {
               if (err) throw err;
