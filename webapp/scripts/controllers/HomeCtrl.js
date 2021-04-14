@@ -17,6 +17,20 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var bgColor = "white";
 
     var currentMessage = "Correto!"
+    var motivationalPhrasesMale = [
+        "Não desanime. Você sabia? A maior parte dos profissionais na área das ciências exatas são homens.",
+        "Não desanime. Saiba que homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
+        "Não desanime. Você sabia? Mais da metade dos pesquisadores doutores do Brasilsão homens.",
+        "Não desanime. Você sabia? Os homens estão entre os líderes na pesquisa científica no Brasil.",
+        "Não desanime. Você sabia? Os homens são a maioria nas áreas de pesquisa e atuação das ciências da matemática, comunicação, tecnologia e natureza."
+    ]
+    var motivationalPhrasesFemale = [
+        "Não desanime, apesar do estereótipo social de que mulheres não são boas na área de exatas, as pesquisas apontam que mulheres têm tanta capacidade quanto os homens para desenvolver carreira nessas áreas.",
+        "Não desanime. Você sabia? As mulheres são líderes na pesquisa científica no Brasil!",
+        "Não desanime. Você sabia? Segundo Freud (2020),o pai da Psicanálise, já no início do séc. XX, comentava sobre a desigualdade de gênero. Nos diz Freud, que o desempenho intelectual não é uma questão de competência de gênero, mas de incentivo para tal, então mulheres são tão capazes quanto os homens de se sair bem em atividades de raciocínio lógico.",
+        "Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 sãomulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
+        "Não desanime. Saiba que mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
+    ]
     var flagMessage = false;
 
     var levelFiveFlag = true;
@@ -214,7 +228,8 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var setMsgType = function(type) {
 
         if (type == "red") {
-            currentMessage = "Resposta Errada!"
+            var f = Math.floor(5*Math.random());
+            currentMessage = motivationalPhrasesMale[f];//"Resposta Errada!"
         } else {
             currentMessage = "Resposta Certa!"
         };
