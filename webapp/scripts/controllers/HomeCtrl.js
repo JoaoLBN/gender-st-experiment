@@ -28,7 +28,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         "Não desanime, apesar do estereótipo social de que mulheres não são boas na área de exatas, as pesquisas apontam que mulheres têm tanta capacidade quanto os homens para desenvolver carreira nessas áreas.",
         "Não desanime. Você sabia? As mulheres são líderes na pesquisa científica no Brasil!",
         "Não desanime. Você sabia? Segundo Freud (2020),o pai da Psicanálise, já no início do séc. XX, comentava sobre a desigualdade de gênero. Nos diz Freud, que o desempenho intelectual não é uma questão de competência de gênero, mas de incentivo para tal, então mulheres são tão capazes quanto os homens de se sair bem em atividades de raciocínio lógico.",
-        "Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 sãomulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
+        "Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 são mulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
         "Não desanime. Saiba que mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
     ]
     var flagMessage = false;
@@ -227,9 +227,17 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     var setMsgType = function(type) {
 
-        if (type == "red") {
+        if (type == "red" && configService.getTheme() == "stMale") {
             var f = Math.floor(5*Math.random());
             currentMessage = motivationalPhrasesMale[f];//"Resposta Errada!"
+        } 
+        if (type == "red" && configService.getTheme() == "stFemale") {
+            var f = Math.floor(5*Math.random());
+            currentMessage = motivationalPhrasesFemale[f];//"Resposta Errada!"
+        }
+        if (type == "red") {
+            var f = Math.floor(5*Math.random());
+            currentMessage = "Resposta Errada!"
         } else {
             currentMessage = "Resposta Certa!"
         };

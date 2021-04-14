@@ -39,9 +39,9 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "ng
 
     // Neutral Theme
     $mdThemingProvider.theme("default")
-        .primaryPalette("blue-grey")
-        .accentPalette("blue-grey")
-        .warnPalette("blue-grey");
+        .primaryPalette("purple")
+        .accentPalette("purple")
+        .warnPalette("purple");
 
     // ST-F 
     $mdThemingProvider.theme("stFemale")
@@ -51,9 +51,9 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "ng
 
     // ST-M 
     $mdThemingProvider.theme("stMale")
-        .primaryPalette("blue")
-        .accentPalette("blue")
-        .warnPalette("blue");
+        .primaryPalette("purple")
+        .accentPalette("purple")
+        .warnPalette("purple");
 
 });
 
