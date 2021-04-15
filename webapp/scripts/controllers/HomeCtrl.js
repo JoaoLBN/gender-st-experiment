@@ -17,6 +17,8 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var bgColor = "white";
 
     var currentMessage = "Correto!"
+    var motivationalPhrases = [];
+    var valorMax = 20;
     var motivationalPhrasesMale = [
         "Não desanime. Você sabia? A maior parte dos profissionais na área das ciências exatas são homens.",
         "Não desanime. Saiba que homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
@@ -31,6 +33,21 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         "Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 são mulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
         "Não desanime. Saiba que mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
     ]
+
+    for(i = 0 ; i < 20 ; i++){
+        var f = Math.floor(5*Math.random());
+        if (configService.getTheme() == "stMale"){
+            motivationalPhrases[i] = motivationalPhrasesMale[f];
+        }
+        if (configService.getTheme() == "stFemale"){
+            motivationalPhrases[i] = motivationalPhrasesFemale[f];
+        }
+        if (configService.getTheme() == "default") {
+            motivationalPhrases[i] = "Resposta Errada!"
+        }
+    }
+    f = 0;
+    console.log("blaaaa: ", motivationalPhrases);
     var flagMessage = false;
 
     var levelFiveFlag = true;
@@ -225,19 +242,24 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return users[index].points;
     };
 
+    // var criarUnico = function() {
+    //     if(motivationalPhrases.length == valorMax){
+    //         if(confirm) motivationalPhrases = [];
+    //         else return;
+    //     }
+    //     var sugestao = Math.ceil(Math.random()*valorMax);
+    //     while(motivationalPhrases.indexOf(sugestao) >= 0){
+    //         sugestao = Math.ceil(Math.random()*valorMax);
+    //     }
+    //     sugestao.push(sugestao);
+    //     return sugestao;
+    // };
     var setMsgType = function(type) {
-
-        if (type == "red" && configService.getTheme() == "stMale") {
-            var f = Math.floor(5*Math.random());
-            currentMessage = motivationalPhrasesMale[f];//"Resposta Errada!"
-        } 
-        if (type == "red" && configService.getTheme() == "stFemale") {
-            var f = Math.floor(5*Math.random());
-            currentMessage = motivationalPhrasesFemale[f];//"Resposta Errada!"
-        }
+        
         if (type == "red") {
-            var f = Math.floor(5*Math.random());
-            currentMessage = "Resposta Errada!"
+            f = Math.floor(20*Math.random());
+            currentMessage = motivationalPhrases[f]; //"Resposta Errada!"
+            console.log("bla: ", motivationalPhrases[f]);
         } else {
             currentMessage = "Resposta Certa!"
         };

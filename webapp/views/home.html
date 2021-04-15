@@ -7,6 +7,7 @@
             <img ng-src="{{getAvatar()}}" class="profile" width="50px">
         </div>
     </md-toolbar>
+    
     <div layout="row" layout-align="left left">
         <div layout="column" layout-margin flex="30">
             <div layout="row" layout-align="space-between center" class="md-primary" flex="25">
@@ -68,6 +69,9 @@
                     <md-button ng-click="hideAvatar()" class="md-primary md-raised">Pronto! Continuar.</md-button>
                 </div>
             </md-card>
+            <div flex="100" style="background-color:{{getBgColor()}}" ng-show="showMessage()" layout="row" layout-align="center center">
+                <span class="text-light"><b>{{getMessage()}}</b></span>
+            </div>
             <md-card layout="column" layout-align="center left " layout-padding ng-show="showQuestions">
                 <h3>2 - Responda!</h3>
                 <label layout-padding layout-margin>Responda as questões abaixo para ganhar pontos, trofeus e atingir uma melhor posição no ranking!
@@ -83,9 +87,9 @@
                         </md-button>
                     </md-list>
                 </div>
-                <div flex="100" style="background-color:{{getBgColor()}}" ng-show="showMessage()" layout="row" layout-align="center center">
+                <!-- <div flex="100" style="background-color:{{getBgColor()}}" ng-show="showMessage()" layout="row" layout-align="center center">
                     <span class="text-light"><b>{{getMessage()}}</b></span>
-                </div>
+                </div> -->
             </md-card>
             <div ng-if="!checkSet1()" layout="row" layout-align="center center" class="md-primary md-raised">
                 <md-card layout="column" layout-align="center left" class="md-primary" layout-padding>
