@@ -1,4 +1,4 @@
-angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDialog, configService, User) {
+angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdDialog, configService, User) {
     console.log("HomeCtrl ok");
 
 
@@ -20,42 +20,42 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
     var motivationalPhrases = [];
     var valorMax = 4;
     var motivationalPhrasesMale = [
-        "Não desanime. Você sabia? A maior parte dos profissionais na área das ciências exatas são homens.",
-        "Não desanime. Você sabia? Homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
-        "Não desanime. Você sabia? Mais da metade dos pesquisadores doutores do Brasilsão homens.",
-        "Não desanime. Você sabia? Os homens estão entre os líderes na pesquisa científica no Brasil.",
-        "Não desanime. Você sabia? Os homens são a maioria nas áreas de pesquisa e atuação das ciências da matemática, comunicação, tecnologia e natureza."
+        "Resposta Errada! Não desanime. Você sabia? A maior parte dos profissionais na área das ciências exatas são homens.",
+        "Resposta Errada! Não desanime. Você sabia? Homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
+        "Resposta Errada! Não desanime. Você sabia? Mais da metade dos pesquisadores doutores do Brasilsão homens.",
+        "Resposta Errada! Não desanime. Você sabia? Os homens estão entre os líderes na pesquisa científica no Brasil.",
+        "Resposta Errada! Não desanime. Você sabia? Os homens são a maioria nas áreas de pesquisa e atuação das ciências da matemática, comunicação, tecnologia e natureza."
     ]
     var motivationalPhrasesFemale = [
-        "Não desanime, Você sabia? Apesar do estereótipo social de que mulheres não são boas na área de exatas, as pesquisas apontam que mulheres têm tanta capacidade quanto os homens para desenvolver carreira nessas áreas.",
-        "Não desanime. Você sabia? As mulheres são líderes na pesquisa científica no Brasil!",
-        "Não desanime. Você sabia? Sigmund Freud (2020),o pai da Psicanálise, já no início do séc. XX, comentava sobre a desigualdade de gênero. Nos diz Freud, que o desempenho intelectual não é uma questão de competência de gênero, mas de incentivo para tal, então mulheres são tão capazes quanto os homens de se sair bem em atividades de raciocínio lógico.",
-        "Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 são mulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
-        "Não desanime. Você sabia? Mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
+        "Resposta Errada! Não desanime, Você sabia? Apesar do estereótipo social de que mulheres não são boas na área de exatas, as pesquisas apontam que mulheres têm tanta capacidade quanto os homens para desenvolver carreira nessas áreas.",
+        "Resposta Errada! Não desanime. Você sabia? As mulheres são líderes na pesquisa científica no Brasil!",
+        "Resposta Errada! Não desanime. Você sabia? Sigmund Freud (2020),o pai da Psicanálise, já no início do séc. XX, comentava sobre a desigualdade de gênero. Nos diz Freud, que o desempenho intelectual não é uma questão de competência de gênero, mas de incentivo para tal, então mulheres são tão capazes quanto os homens de se sair bem em atividades de raciocínio lógico.",
+        "Resposta Errada! Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 são mulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
+        "Resposta Errada! Não desanime. Você sabia? Mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
     ]
 
-        var sorteados = [];
-        var criarUnico = function() {
-            if (sorteados.length == valorMax) {
-                sorteados = [];
-                return;
-            }
-            var sugestao = Math.ceil(Math.random() * valorMax);
-            while (sorteados.indexOf(sugestao) >= 0) { 
-                sugestao = Math.ceil(Math.random() * valorMax);
-            }
-            sorteados.push(sugestao);
-            return sugestao;
+    var sorteados = [];
+    var criarUnico = function () {
+        if (sorteados.length == valorMax) {
+            sorteados = [];
+            return;
+        }
+        var sugestao = Math.ceil(Math.random() * valorMax);
+        while (sorteados.indexOf(sugestao) >= 0) {
+            sugestao = Math.ceil(Math.random() * valorMax);
+        }
+        sorteados.push(sugestao);
+        return sugestao;
     };
 
-    var startPhrases = function() {
-        for(i = 0 ; i < 20 ; i++){
+    var startPhrases = function () {
+        for (i = 0; i < 20; i++) {
             var f = criarUnico();
-            if(f == undefined) f = 0;
-            if (configService.getTheme() == "stMale"){
+            if (f == undefined) f = 0;
+            if (configService.getTheme() == "stMale") {
                 motivationalPhrases[i] = motivationalPhrasesMale[f];
             }
-            if (configService.getTheme() == "stFemale"){
+            if (configService.getTheme() == "stFemale") {
                 motivationalPhrases[i] = motivationalPhrasesFemale[f];
             }
             if (configService.getTheme() == "default") {
@@ -72,19 +72,19 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     var users = [{
         name: "Alan",
-        points: 19,
+        points: 79, //19,
         avatar: "assets/" + configService.getTheme() + "/images/ranking1.png"
     }, {
         name: "Valentine",
-        points: 15,
+        points: 75, //15,
         avatar: "assets/" + configService.getTheme() + "/images/ranking2.png"
     }, {
         name: "Francis",
-        points: 13,
+        points: 63, //13,
         avatar: "assets/" + configService.getTheme() + "/images/ranking3.png"
     }, {
         name: "Danni",
-        points: 7,
+        points: 27, //7,
         avatar: "assets/" + configService.getTheme() + "/images/ranking4.png"
     }, {
         name: "Gil",
@@ -105,35 +105,35 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     $scope.showQuestions = false;
 
-    $scope.getUserColor = function(name) {
+    $scope.getUserColor = function (name) {
         if (name == "Alex")
             return "#e0e0e0";
         return "white";
     };
-    $scope.getBgColor = function() {
+    $scope.getBgColor = function () {
         return bgColor;
     };
 
-    $scope.hideAvatar = function() {
+    $scope.hideAvatar = function () {
         $scope.showAvatar = false;
         $scope.showQuestions = true;
-        updatePoints(0); 
+        updatePoints(0);
     };
 
-    $scope.getUsers = function() {
+    $scope.getUsers = function () {
         return users;
     };
 
-    $scope.getImage = function(value) {
+    $scope.getImage = function (value) {
         return "assets/" + configService.getTheme() + "/images/avatar" + value + ".png";
     };
 
-    $scope.setAvatar = function(value) {
+    $scope.setAvatar = function (value) {
         userAvatar = value;
         users[4].avatar = value;
     };
 
-    $scope.getNumber = function(num) {
+    $scope.getNumber = function (num) {
         var array = new Array(num);
         for (var i = 0; i < num; i++) {
             array.push(i);
@@ -142,33 +142,33 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return array;
     };
 
-    $scope.getBar = function() {
+    $scope.getBar = function () {
         return "assets/" + configService.getTheme() + "/images/bar.png";
 
     };
 
-    $scope.checkSet1 = function() {
+    $scope.checkSet1 = function () {
         return showSet1;
     };
 
 
-    $scope.checkAvatar = function() {
+    $scope.checkAvatar = function () {
         return !$scope.showAvatar;
     };
 
-    $scope.setSet1 = function(value) {
+    $scope.setSet1 = function (value) {
         showSet1 = value;
     };
 
-    $scope.showNext = function() {
+    $scope.showNext = function () {
         return configService.getNext();
     };
 
-    $scope.showPosttest = function() {
+    $scope.showPosttest = function () {
         $location.path("/posttest2");
     };
 
-    $scope.getStars = function() {
+    $scope.getStars = function () {
 
         if (configService.nextOn) {
             return "star";
@@ -177,18 +177,18 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return "star_border";
     };
 
-    $scope.getRanking = function(value) {
+    $scope.getRanking = function (value) {
         return users[value].avatar;
 
     };
 
-    var checkBadge = function(index) {
+    var checkBadge = function (index) {
 
         return configService.getBadges()[index];
     };
 
 
-    $scope.getBadge = function(name) {
+    $scope.getBadge = function (name) {
 
         var id = 0;
 
@@ -214,54 +214,54 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         return "assets/" + configService.getTheme() + "/images/" + flag + ".png";
     };
 
-    $scope.getAvatar = function() {
+    $scope.getAvatar = function () {
         return userAvatar;
     };
 
-    $scope.getLevel = function() {
+    $scope.getLevel = function () {
         return level;
     };
 
-    $scope.chooseAvatar = function() {
+    $scope.chooseAvatar = function () {
         $scope.showAvatar = false;
     };
 
-    $scope.getPoints = function() {
+    $scope.getPoints = function () {
 
         return totalPoints;
     };
 
-    $scope.question = function() {
+    $scope.question = function () {
         return "assets/" + configService.getTheme() + "/images/q-0.png";
     };
 
-    $scope.dynamicTheme = function() {
+    $scope.dynamicTheme = function () {
         return configService.getTheme();
     };
     var setCurrent = function setCurrent(index) {
         userAnswer = $scope.items[index];
     };
 
-    $scope.getCurrent = function() {
+    $scope.getCurrent = function () {
         return Math.trunc(totalPoints / 10);
     };
 
-    $scope.getQuestion = function() {
+    $scope.getQuestion = function () {
         return currentQuestion + 1;
     };
 
-    $scope.getUserName = function(index) {
+    $scope.getUserName = function (index) {
         return users[index].name;
     };
 
-    $scope.getUserPoints = function(index) {
+    $scope.getUserPoints = function (index) {
 
         return users[index].points;
     };
 
     var k = 0;
-    var setMsgType = function(type) {
-        
+    var setMsgType = function (type) {
+
         if (type == "red") {
             currentMessage = motivationalPhrases[k]; //"Resposta Errada!"
             // console.log("bla: ", motivationalPhrases[k]);
@@ -269,27 +269,56 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         } else {
             currentMessage = "Resposta Certa!"
         };
+        return currentMessage;
     };
 
-    var playAnimation = function(type) {
+    var playAnimation = function (type) {
 
         console.log("playing animation: " + type);
 
-
-        bgColor = type;
-        flagMessage = true;
-
         setMsgType(type);
+        if (configService.getTheme() == "stMale") {
+            bgColor = type;
+            flagMessage = true;
+            setMsgType(type);
 
-        setTimeout(function() {
-            $scope.$apply(function() {
-                bgColor = "white";
-                flagMessage = false;
-            });
-        }, 2000);
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    bgColor = "white";
+                    flagMessage = false;
+                });
+            }, 5000);
+        }
+        if (configService.getTheme() == "stFemale") {
+            bgColor = type;
+            flagMessage = true;
+            setMsgType(type);
+
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    bgColor = "white";
+                    flagMessage = false;
+                });
+            }, 7000);
+        }
+        if (configService.getTheme() == "default") {
+            bgColor = type;
+            flagMessage = true;
+            setMsgType(type);
+
+            setTimeout(function () {
+                $scope.$apply(function () {
+                    bgColor = "white";
+                    flagMessage = false;
+                });
+            }, 2000);
+        }
+
+
+
     };
 
-    var updatePoints = function(value) {
+    var updatePoints = function (value) {
 
         if (value < 0 && (totalPoints + value) >= 0) {
             totalPoints += value;
@@ -309,19 +338,19 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         //updates ranking
         users = [{
             name: "Alan",
-            points: 19,
+            points: 79, //19,
             avatar: "assets/" + configService.getTheme() + "/images/ranking1.png"
         }, {
             name: "Valentine",
-            points: 15,
+            points: 75, //15,
             avatar: "assets/" + configService.getTheme() + "/images/ranking2.png"
         }, {
             name: "Francis",
-            points: 13,
+            points: 63, //13,
             avatar: "assets/" + configService.getTheme() + "/images/ranking3.png"
         }, {
             name: "Danni",
-            points: 7,
+            points: 27, //7,
             avatar: "assets/" + configService.getTheme() + "/images/ranking4.png"
         }, {
             name: "Gil",
@@ -330,13 +359,13 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
         }];
 
         var sortedList = users.slice(0);
-        sortedList.sort(function(a, b) {
+        sortedList.sort(function (a, b) {
             return a.points - b.points;
         });
 
         users = sortedList.reverse();
 
-        setTimeout(function() {
+        setTimeout(function () {
             $scope.decrement = false;
             $scope.increment = false;
         }, 1000);
@@ -344,15 +373,15 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
     };
 
-    $scope.getMessage = function() {
+    $scope.getMessage = function () {
         return currentMessage;
     };
 
-    $scope.showMessage = function() {
+    $scope.showMessage = function () {
         return flagMessage;
     }
 
-    $scope.processAnswer = function(value) {
+    $scope.processAnswer = function (value) {
         setCurrent(value);
         var dialogType = null;
 
@@ -376,7 +405,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(0);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $mdDialog.hide();
                 }, 2000);
 
@@ -393,7 +422,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(1);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $mdDialog.hide();
                 }, 2500);
 
@@ -409,7 +438,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
                 configService.addBadge(2);
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $mdDialog.hide();
                 }, 2500);
             };
@@ -430,7 +459,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
             configService.addBadge(2);
 
             showSet1 = false;
-            setTimeout(function() {
+            setTimeout(function () {
                 $mdDialog.hide();
             }, 2500);
         } else {
@@ -441,7 +470,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
         currentQuestion++;
         $scope.progress = 100 * (currentQuestion + 1) / 20;
-        $scope.question = function() {
+        $scope.question = function () {
             return "assets/" + configService.getTheme() + "/images/q-" + currentQuestion + ".png";
         };
 
@@ -450,7 +479,7 @@ angular.module('tutor').controller("HomeCtrl", function($scope, $location, $mdDi
 
             //  configService.setNext(true);
             User.setActivityPoints(totalPoints);
-      
+
             console.log(User.getResponse());
             console.log(userAnswer);//vamos ver
             //  $location.path("/home");

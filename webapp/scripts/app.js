@@ -37,23 +37,34 @@ angular.module("tutor", ["ngRoute", "ngResource", "ngAnimate", "ngMaterial", "ng
 
     $mdThemingProvider.alwaysWatchTheme(true);
 
+//*********************************//
+    var newBlueMap = $mdThemingProvider.extendPalette('blue', {
+        '500': '#aced9d',
+        'contrastDefaultColor': 'light'
+      });
+
+      // Register the new color palette map with the name <code>neonRed</code>
+      $mdThemingProvider.definePalette('newBlue', newBlueMap);
+
+//*********************************//
+
     // Neutral Theme
     $mdThemingProvider.theme("default")
-        .primaryPalette("blue-grey")
-        .accentPalette("blue-grey")
-        .warnPalette("blue-grey");
+        .primaryPalette("newBlue")
+        .accentPalette("newBlue")
+        .warnPalette("newBlue");
 
     // ST-F 
     $mdThemingProvider.theme("stFemale")
-        .primaryPalette("purple")
-        .accentPalette("purple")
-        .warnPalette("purple");
+        .primaryPalette("newBlue")
+        .accentPalette("newBlue")
+        .warnPalette("newBlue");
 
     // ST-M 
     $mdThemingProvider.theme("stMale")
-        .primaryPalette("blue")
-        .accentPalette("blue")
-        .warnPalette("blue");
+        .primaryPalette("newBlue")
+        .accentPalette("newBlue")
+        .warnPalette("newBlue");
 
 });
 
