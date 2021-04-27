@@ -40,12 +40,15 @@ angular
       }
 
       User.setAge($scope.age);
+      User.setName($scope.name);
       User.setGender($scope.gender);
       User.setEmail($scope.email);
       User.setEthnicity($scope.ethnicity);
       // User.setSexualOrientation($scope.sexualOrientation);
       // User.setCivilState($scope.civilState);
       User.setCity($scope.city);
+      User.setSchoolGrade($scope.schoolGrade);
+      User.setEconomiState($scope.economicState);
       User.setEmail($scope.email);
       User.setWhatsapp($scope.whatsapp);
 

@@ -54,6 +54,8 @@ tutorServices.service("User", function($http) {
         city: "",
         email: "",
         whatsapp:"",
+        economicState: "",
+        schoolGrade: "",
         pretestPoints: 0,
         activityPoints: 0,
         posttestPoints: 0,
@@ -88,6 +90,12 @@ tutorServices.service("User", function($http) {
     }
     this.setCivilState = function(value) {
         resp.civilState = value;
+    }
+    this.setEconomiState = function(value) {
+        resp.economicState = value;
+    }
+    this.setSchoolGrade = function(value) {
+        resp.schoolGrade = value;
     }
     this.setCity = function(value) {
         resp.city = value;
