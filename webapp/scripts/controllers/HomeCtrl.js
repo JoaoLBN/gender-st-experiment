@@ -20,18 +20,18 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
     var motivationalPhrases = [];
     var valorMax = 4;
     var motivationalPhrasesMale = [
-        "Resposta Errada! Não desanime. Você sabia? A maior parte dos profissionais na área das ciências exatas são homens.",
-        "Resposta Errada! Não desanime. Você sabia? Homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
-        "Resposta Errada! Não desanime. Você sabia? Mais da metade dos pesquisadores doutores do Brasilsão homens.",
-        "Resposta Errada! Não desanime. Você sabia? Os homens estão entre os líderes na pesquisa científica no Brasil.",
-        "Resposta Errada! Não desanime. Você sabia? Os homens são a maioria nas áreas de pesquisa e atuação das ciências da matemática, comunicação, tecnologia e natureza."
+        "A maior parte dos profissionais na área das ciências exatas são homens.",
+        "Você sabia? Homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
+        "Mais da metade dos pesquisadores doutores do Brasilsão homens.",
+        "Os homens estão entre os líderes na pesquisa científica no Brasil.",
+        "Os homens são a maioria nas áreas de pesquisa e atuação das ciências da matemática, comunicação, tecnologia e natureza."
     ]
     var motivationalPhrasesFemale = [
-        "Resposta Errada! Não desanime, Você sabia? Apesar do estereótipo social de que mulheres não são boas na área de exatas, as pesquisas apontam que mulheres têm tanta capacidade quanto os homens para desenvolver carreira nessas áreas.",
-        "Resposta Errada! Não desanime. Você sabia? As mulheres são líderes na pesquisa científica no Brasil!",
-        "Resposta Errada! Não desanime. Você sabia? Sigmund Freud (2020),o pai da Psicanálise, já no início do séc. XX, comentava sobre a desigualdade de gênero. Nos diz Freud, que o desempenho intelectual não é uma questão de competência de gênero, mas de incentivo para tal, então mulheres são tão capazes quanto os homens de se sair bem em atividades de raciocínio lógico.",
-        "Resposta Errada! Não desanime. Você sabia? Entre os 500 top autores da USP publicando entre 2015-2021, 131 são mulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
-        "Resposta Errada! Não desanime. Você sabia? Mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
+        "Apesar do estereótipo social de que mulheres não são boas na área de exatas, as pesquisas apontam que mulheres têm tanta capacidade quanto os homens para desenvolver carreira nessas áreas.",
+        "As mulheres são líderes na pesquisa científica no Brasil!",
+        "Sigmund Freud (2020),o pai da Psicanálise, já no início do séc. XX, comentava sobre a desigualdade de gênero. Nos diz Freud, que o desempenho intelectual não é uma questão de competência de gênero, mas de incentivo para tal, então mulheres são tão capazes quanto os homens de se sair bem em atividades de raciocínio lógico.",
+        "Entre os 500 top autores da USP publicando entre 2015-2021, 131 são mulheres.E as pesquisadoras, doutoras, somam mais da metade dos titulares da área da saúde.",
+        "Mulheres têm tanta capacidade quanto os homens em atividades de raciocínio lógico e resolução de tarefas complexas."
     ]
 
     var sorteados = [];
@@ -277,35 +277,44 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
         console.log("playing animation: " + type);
 
         setMsgType(type);
-        if (configService.getTheme() == "stMale") {
-            bgColor = type;
-            flagMessage = true;
-            setMsgType(type);
 
+        // Resposta errada
+        if (type == "red" && configService.getTheme() != "default") {
+            flagMessage = false;
+
+            $mdDialog.show({
+                controller: 'DialogCtrl',
+                controllerAs: 'ctrl',
+                templateUrl: 'views/dialog.html',
+                parent: angular.element(document.body),
+                locals: {
+                    title: "Resposta Errada! Não desanime. Você sabia?",
+                    textContent: currentMessage
+                }
+            });
+
+            return;
+        }
+
+        // Resposta certa
+        bgColor = type;
+        flagMessage = true;
+        
+        if (configService.getTheme() == "stMale") {
             setTimeout(function () {
                 $scope.$apply(function () {
                     bgColor = "white";
                     flagMessage = false;
                 });
             }, 5000);
-        }
-        if (configService.getTheme() == "stFemale") {
-            bgColor = type;
-            flagMessage = true;
-            setMsgType(type);
-
+        } else if (configService.getTheme() == "stFemale") {
             setTimeout(function () {
                 $scope.$apply(function () {
                     bgColor = "white";
                     flagMessage = false;
                 });
             }, 7000);
-        }
-        if (configService.getTheme() == "default") {
-            bgColor = type;
-            flagMessage = true;
-            setMsgType(type);
-
+        } else if (configService.getTheme() == "default") {
             setTimeout(function () {
                 $scope.$apply(function () {
                     bgColor = "white";
@@ -313,7 +322,6 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
                 });
             }, 2000);
         }
-
 
 
     };
