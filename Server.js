@@ -20,7 +20,7 @@ app.post('/save-response', function(req, res, next){
   var respId = uuid.v1()
 
   //data to be saved (participant's response)
-  var row = [respId, req.body.startTime, req.body.endTime, req.body.testType, req.body.pretestPoints, req.body.posttestPoints,req.body.activityPoints, req.body.posttest2Points, req.body.pre, req.body.post, req.body.post2, req.body.flowPoints,req.body.flow, req.body.gender ,req.body.name, req.body.age, req.body.economicState, req.body.schoolGrade, req.body.city, req.body.email, req.body.whatsapp].join(";")+"\n"
+  var row = [respId, req.body.startTime, req.body.endTime, req.body.testType, req.body.pretestPoints, req.body.posttestPoints,req.body.activityPoints, req.body.posttest2Points, req.body.pre, req.body.post, req.body.post2, req.body.flowPoints,req.body.flow, req.body.gender ,req.body.name, req.body.age, req.body.economicState, req.body.schoolGrade, req.body.email, req.body.whatsapp].join(";")+"\n"
 
   fs.stat('responses.csv', function (err, stat) {
       if (err == null) {
@@ -46,5 +46,5 @@ app.post('/save-response', function(req, res, next){
 
 });
 
-app.listen(8086, 'localhost'); //8086
+app.listen(8080, 'localhost'); //8086
 console.log("This project is listening on port 8080");

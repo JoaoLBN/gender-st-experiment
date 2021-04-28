@@ -21,8 +21,8 @@ angular.module('tutor').controller("HomeCtrl", function ($scope, $location, $mdD
     var valorMax = 4;
     var motivationalPhrasesMale = [
         "A maior parte dos profissionais na área das ciências exatas são homens.",
-        "Você sabia? Homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
-        "Mais da metade dos pesquisadores doutores do Brasilsão homens.",
+        "Homens são tão bons quantoas mulhere sem atividades de raciocínio lógico e resolução de tarefas complexas.",
+        "Mais da metade dos pesquisadores doutores do Brasil são homens.",
         "Os homens estão entre os líderes na pesquisa científica no Brasil.",
         "Os homens são a maioria nas áreas de pesquisa e atuação das ciências da matemática, comunicação, tecnologia e natureza."
     ]
